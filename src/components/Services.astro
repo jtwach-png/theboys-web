@@ -41,6 +41,8 @@ const services = [
     featured: false,
   },
 ];
+
+const coffeeHref = `https://wa.me/56982190769?text=${encodeURIComponent('Hola, quiero agendar un café con The Boys')}`;
 ---
 
 <section id="servicios" class="section pilares">
@@ -55,6 +57,13 @@ const services = [
         </article>
       ))
     }
+    <article class="pilar-card cta-card">
+      <h3>¿Tomamos un café?</h3>
+      <p class="pilar-desc">Conversemos sobre tu próximo proyecto, sin compromiso.</p>
+      <a class="cta-card-link" href={coffeeHref} target="_blank" rel="noopener noreferrer">
+        Agendar un café
+      </a>
+    </article>
   </div>
 </section>
 
@@ -95,6 +104,33 @@ const services = [
     font-size: 14px;
     line-height: 1.5;
     color: rgba(250, 250, 250, 0.65);
+  }
+  .cta-card {
+    background: var(--lime);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .cta-card:hover {
+    background: var(--lime);
+    filter: brightness(1.05);
+  }
+  .cta-card h3 {
+    color: var(--ink);
+  }
+  .cta-card .pilar-desc {
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: var(--space-2);
+  }
+  .cta-card-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 13px;
+    color: var(--ink);
+    text-decoration: underline;
   }
 </style>
 
