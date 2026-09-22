@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import ReviewToggle from '../components/ReviewToggle.astro';
 
 interface Props {
   title: string;
@@ -8,6 +9,38 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'The Boys',
+  legalName: 'Marketing y Publicidad Moob SpA y Locos Chile SpA',
+  url: 'https://theboys.cl',
+  logo: 'https://theboys.cl/logo-completo.svg',
+  slogan: 'think brave!',
+  description,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Av. Apoquindo 6550, of. 205',
+    addressLocality: 'Las Condes',
+    addressRegion: 'Región Metropolitana',
+    addressCountry: 'CL',
+  },
+  founder: [
+    {
+      '@type': 'Person',
+      name: 'José Tomás Wachtendorff',
+      jobTitle: 'Founder & Chief Strategy Officer',
+      email: 'mailto:josetomas@theboys.cl',
+    },
+    {
+      '@type': 'Person',
+      name: 'Miguel Ángel Barahona',
+      jobTitle: 'Founder & Chief Creative Officer',
+      email: 'mailto:miguelangel@theboys.cl',
+    },
+  ],
+};
 ---
 
 <!DOCTYPE html>
@@ -31,10 +64,12 @@ const { title, description } = Astro.props;
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} is:inline />
     <title>{title}</title>
   </head>
   <body>
     <slot />
     <WhatsAppButton />
+    <ReviewToggle />
   </body>
 </html>

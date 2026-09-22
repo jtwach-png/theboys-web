@@ -13,7 +13,7 @@ const entries = (await getCollection('clientes')).sort((a, b) => a.data.order - 
       entries.map((c) => (
         <li class:list={['cliente-tile', { 'has-logo': c.data.logo }]}>
           {c.data.logo ? (
-            <Image src={c.data.logo} alt={c.data.name} width={160} height={64} />
+            <Image src={c.data.logo} alt={c.data.name} width={160} height={64} fit="contain" />
           ) : (
             <span>{c.data.name}</span>
           )}

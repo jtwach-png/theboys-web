@@ -45,7 +45,7 @@ const premiosData = premios.map((name) => ({
     {
       premiosData.map((p) => (
         <li class:list={['premio-tile', { 'has-logo': p.logo }]}>
-          {p.logo ? <Image src={p.logo} alt={p.name} width={120} height={48} /> : <span>{p.name}</span>}
+          {p.logo ? <Image src={p.logo} alt={p.name} width={120} height={48} fit="contain" /> : <span>{p.name}</span>}
         </li>
       ))
     }

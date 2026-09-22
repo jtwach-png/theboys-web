@@ -1,0 +1,68 @@
+---
+---
+
+<div class="review-toggle" role="region" aria-label="Panel de revisión de variantes (temporal, no es parte del sitio final)">
+  <p class="review-title">Revisión A/B</p>
+  <label>
+    <input type="checkbox" id="toggle-strokes" />
+    Trazos a mano
+  </label>
+  <label>
+    <input type="checkbox" id="toggle-faq" />
+    Sección FAQ
+  </label>
+</div>
+
+<style>
+  .review-toggle {
+    position: fixed;
+    left: var(--space-3);
+    bottom: var(--space-3);
+    z-index: 20;
+    background: rgba(20, 20, 20, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-btn);
+    padding: var(--space-2) var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(250, 250, 250, 0.85);
+  }
+  .review-title {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: rgba(250, 250, 250, 0.5);
+    margin-bottom: 2px;
+  }
+  .review-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  const KEYS = { strokes: 'review-strokes', faq: 'review-faq' } as const;
+
+  function apply() {
+    document.body.classList.toggle('variant-strokes', localStorage.getItem(KEYS.strokes) === '1');
+    document.body.classList.toggle('variant-faq', localStorage.getItem(KEYS.faq) === '1');
+  }
+
+  function wire(id: string, key: string) {
+    const el = document.getElementById(id) as HTMLInputElement | null;
+    if (!el) return;
+    el.checked = localStorage.getItem(key) === '1';
+    el.addEventListener('change', () => {
+      localStorage.setItem(key, el.checked ? '1' : '0');
+      apply();
+    });
+  }
+
+  wire('toggle-strokes', KEYS.strokes);
+  wire('toggle-faq', KEYS.faq);
+  apply();
+</script>

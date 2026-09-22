@@ -52,12 +52,21 @@ const coffeeHref = `https://wa.me/56982190769?text=${encodeURIComponent('Hola, q
     {
       services.map((s) => (
         <article class:list={['pilar-card', { featured: s.featured }]}>
+          {s.featured && (
+            <svg class="hand-stroke stroke-circle" viewBox="0 0 220 90" aria-hidden="true">
+              <path d="M18,50 C10,20 55,6 108,7 C168,8 208,22 202,48 C196,76 138,86 88,83 C42,80 8,66 14,48" />
+            </svg>
+          )}
           <h3>{s.name}</h3>
           <p class="pilar-desc">{s.desc}</p>
         </article>
       ))
     }
     <article class="pilar-card cta-card">
+      <svg class="hand-stroke stroke-arrow" viewBox="0 0 100 60" aria-hidden="true">
+        <path d="M92,6 C60,2 24,16 10,40" />
+        <path d="M10,40 L18,28 M10,40 L23,45" />
+      </svg>
       <h3>¿Tomamos un café?</h3>
       <p class="pilar-desc">Conversemos sobre tu próximo proyecto, sin compromiso.</p>
       <a class="cta-card-link" href={coffeeHref} target="_blank" rel="noopener noreferrer">
@@ -85,10 +94,22 @@ const coffeeHref = `https://wa.me/56982190769?text=${encodeURIComponent('Hola, q
     background: #161616;
   }
   .pilar-card.featured {
+    position: relative;
     background: #14101c;
   }
   .pilar-card.featured:hover {
     background: #1a1424;
+  }
+  .stroke-circle {
+    position: absolute;
+    top: -6px;
+    left: 8px;
+    width: 160px;
+    height: auto;
+    fill: none;
+    stroke: var(--red);
+    stroke-width: 3;
+    stroke-linecap: round;
   }
   .pilar-card h3 {
     font-family: var(--font-display);
@@ -106,11 +127,24 @@ const coffeeHref = `https://wa.me/56982190769?text=${encodeURIComponent('Hola, q
     color: rgba(250, 250, 250, 0.65);
   }
   .cta-card {
+    position: relative;
     background: var(--lime);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+  }
+  .stroke-arrow {
+    position: absolute;
+    right: 10px;
+    bottom: 44px;
+    width: 90px;
+    height: auto;
+    fill: none;
+    stroke: var(--red);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
   .cta-card:hover {
     background: var(--lime);

@@ -2,13 +2,13 @@
 const contactos = [
   {
     nombre: 'José Tomás Wachtendorff',
-    rol: 'CSO',
+    rol: 'Founder & Chief Strategy Officer',
     email: 'josetomas@theboys.cl',
     telefono: '+56 9 8219 0769',
   },
   {
     nombre: 'Miguel Ángel Barahona',
-    rol: 'CCO',
+    rol: 'Founder & Chief Creative Officer',
     email: 'miguelangel@theboys.cl',
     telefono: '+56 9 9188 4340',
   },
@@ -17,7 +17,12 @@ const contactos = [
 
 <section id="contacto" class="section contacto">
   <p class="section-kicker">Hablemos</p>
-  <h2 class="section-title">Contacto</h2>
+  <h2 class="section-title contacto-title">
+    Contacto
+    <svg class="hand-stroke stroke-underline" viewBox="0 0 260 30" aria-hidden="true">
+      <path d="M4,18 C60,28 160,4 256,14" />
+    </svg>
+  </h2>
   <div class="contacto-grid">
     {
       contactos.map((c) => (
@@ -30,9 +35,28 @@ const contactos = [
       ))
     }
   </div>
+  <p class="oficina">
+    Av. Apoquindo 6550, of. 205, Las Condes, Santiago
+  </p>
 </section>
 
 <style>
+  .contacto-title {
+    position: relative;
+    display: inline-block;
+  }
+  .stroke-underline {
+    position: absolute;
+    left: 0;
+    bottom: -14px;
+    width: 70%;
+    max-width: 260px;
+    height: auto;
+    fill: none;
+    stroke: var(--red);
+    stroke-width: 4;
+    stroke-linecap: round;
+  }
   .contacto-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -66,5 +90,10 @@ const contactos = [
   .contacto-card a:hover {
     color: var(--paper);
     text-decoration: underline;
+  }
+  .oficina {
+    margin-top: var(--space-4);
+    font-size: 13px;
+    color: rgba(250, 250, 250, 0.5);
   }
 </style>
