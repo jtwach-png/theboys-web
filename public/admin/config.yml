@@ -1,0 +1,35 @@
+# Admin de contenido (Decap CMS). Ver /admin en el sitio.
+#
+# Para probarlo en este equipo (sin GitHub todavía):
+#   1) npm run dev
+#   2) en otra terminal: npm run cms
+#   3) abrir http://localhost:4321/admin/
+#
+# Para producción falta: crear el repo en GitHub, reemplazar "repo" abajo por
+# "usuario/nombre-repo", desplegar en Vercel, y armar un OAuth provider de GitHub
+# (Decap lo necesita para que el botón "Iniciar sesión con GitHub" funcione).
+backend:
+  name: github
+  repo: OWNER/REPO # TODO: reemplazar cuando exista el repositorio en GitHub
+  branch: main
+
+local_backend: true
+
+media_folder: "src/assets/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "clientes"
+    label: "Clientes"
+    label_singular: "Cliente"
+    folder: "src/content/clientes"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    media_folder: ""
+    public_folder: ""
+    fields:
+      - { label: "Nombre", name: "name", widget: "string" }
+      - { label: "Logo", name: "logo", widget: "image", required: false }
+      - { label: "Orden", name: "order", widget: "number", default: 0, value_type: "int", required: false }

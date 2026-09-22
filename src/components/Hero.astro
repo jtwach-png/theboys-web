@@ -1,0 +1,239 @@
+---
+---
+
+<svg width="0" height="0" style="position: absolute;" aria-hidden="true">
+  <filter id="distort">
+    <feTurbulence
+      id="turb"
+      type="fractalNoise"
+      baseFrequency="0.0 0.0"
+      numOctaves="2"
+      result="noise"
+      seed="7"></feTurbulence>
+    <feDisplacementMap
+      id="disp"
+      in="SourceGraphic"
+      in2="noise"
+      scale="0"
+      xChannelSelector="R"
+      yChannelSelector="G"></feDisplacementMap>
+  </filter>
+</svg>
+
+<section class="hero">
+  <div class="hero-col hero-col-hook" id="heroHook">
+    <p class="kicker">Agencia de publicidad creativa digital</p>
+    <h1 class="headline">THINK<br />BRAVE!</h1>
+    <svg class="underline-wrap" viewBox="0 0 420 40" aria-hidden="true">
+      <path
+        id="stroke-path"
+        d="M6 24 C 90 6, 180 34, 270 14 S 400 8, 414 20"
+        stroke-dasharray="600"
+        stroke-dashoffset="600"></path>
+    </svg>
+  </div>
+  <div class="hero-col hero-col-support">
+    <p class="subhead">
+      Ideas y estrategias multiplataforma, desde la estrategia y la investigación hasta la
+      ejecución. Relevant Punch: marca, sociedad y momentos.
+    </p>
+    <p class="credential">
+      <span class="dot"></span>Única agencia en Chile con laboratorio propio de neurociencia aplicada
+    </p>
+    <a class="cta" href="#servicios">Ver los 8 servicios</a>
+  </div>
+  <video class="hero-badge" autoplay muted loop playsinline aria-hidden="true">
+    <source src="/video/theboys-hero-bust-cropped.mp4" type="video/mp4" />
+  </video>
+</section>
+
+<style>
+  .hero {
+    min-height: 82vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: var(--space-8);
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 6vh 6vw;
+    position: relative;
+  }
+  @media (min-width: 900px) {
+    .hero {
+      grid-template-columns: minmax(0, 540px) minmax(0, 360px) minmax(0, 420px);
+      gap: 2vw;
+    }
+  }
+  .hero-col-hook,
+  .hero-col-support {
+    min-width: 0;
+  }
+  .kicker {
+    font-size: clamp(13px, 1.4vw, 15px);
+    color: var(--lime);
+    margin-bottom: var(--space-2);
+    max-width: 480px;
+  }
+  .headline {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: clamp(48px, 8vw, 128px);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    filter: url(#distort);
+    color: var(--paper);
+  }
+  .underline-wrap {
+    width: min(340px, 60vw);
+    margin: var(--space-2) 0 0;
+    display: block;
+  }
+  .underline-wrap path {
+    fill: none;
+    stroke: var(--red);
+    stroke-width: 6;
+    stroke-linecap: round;
+  }
+  .subhead {
+    max-width: 520px;
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.5;
+    color: rgba(250, 250, 250, 0.75);
+    margin-bottom: var(--space-3);
+  }
+  .credential {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 520px;
+    font-size: 14px;
+    color: var(--paper);
+    margin-bottom: var(--space-4);
+  }
+  .credential .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--lime);
+    flex: none;
+  }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 14px;
+    padding: var(--space-2) var(--space-3);
+    background: var(--lime);
+    color: var(--ink);
+    border: none;
+    border-radius: var(--radius-btn);
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+  .cta:hover {
+    transform: scale(1.04);
+  }
+  .cta:active {
+    transform: scale(0.98);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .headline {
+      filter: none;
+    }
+  }
+
+  .hero-badge {
+    display: none;
+    width: auto;
+    height: 420px;
+    max-width: 100%;
+    margin-left: 3vw;
+    background: var(--ink);
+    justify-self: end;
+    pointer-events: none;
+  }
+  @media (min-width: 900px) {
+    .hero-badge {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduceMotion) {
+    gsap.set('#stroke-path', { strokeDashoffset: 600 });
+    gsap.to('#stroke-path', { strokeDashoffset: 0, duration: 1.4, delay: 0.4, ease: 'power2.inOut' });
+    gsap.from('.headline', { y: 40, opacity: 0, duration: 0.9, ease: 'power3.out' });
+    gsap.from('.kicker, .subhead, .cta', { opacity: 0, y: 16, duration: 0.8, stagger: 0.08, delay: 0.2 });
+  }
+
+  const turb = document.getElementById('turb');
+  const disp = document.getElementById('disp');
+  let targetScale = 0;
+  let currentScale = 0;
+  let targetFreq = 0;
+  let currentFreq = 0;
+  let lastX: number | null = null;
+  let lastY: number | null = null;
+
+  function onMove(x: number, y: number) {
+    if (reduceMotion) return;
+    if (lastX !== null && lastY !== null) {
+      const dx = x - lastX;
+      const dy = y - lastY;
+      const speed = Math.min(Math.sqrt(dx * dx + dy * dy), 60);
+      targetScale = speed * 1.1;
+      targetFreq = 0.004 + speed * 0.00015;
+    }
+    lastX = x;
+    lastY = y;
+  }
+
+  window.addEventListener('mousemove', (e) => onMove(e.clientX, e.clientY));
+  window.addEventListener(
+    'touchmove',
+    (e) => {
+      if (e.touches[0]) onMove(e.touches[0].clientX, e.touches[0].clientY);
+    },
+    { passive: true }
+  );
+
+  function tick() {
+    currentScale += (targetScale - currentScale) * 0.12;
+    currentFreq += (targetFreq - currentFreq) * 0.12;
+    targetScale *= 0.9;
+    if (disp) disp.setAttribute('scale', currentScale.toFixed(2));
+    if (turb) turb.setAttribute('baseFrequency', `${currentFreq.toFixed(4)} ${(currentFreq * 1.3).toFixed(4)}`);
+    requestAnimationFrame(tick);
+  }
+  if (!reduceMotion) requestAnimationFrame(tick);
+
+  function syncBadgeHeight() {
+    const hook = document.getElementById('heroHook');
+    const badge = document.querySelector<HTMLElement>('.hero-badge');
+    if (!hook || !badge) return;
+    const h = hook.getBoundingClientRect().height;
+    if (h > 0) badge.style.height = `${h}px`;
+  }
+  syncBadgeHeight();
+  window.addEventListener('load', syncBadgeHeight);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(syncBadgeHeight);
+  }
+  let resizeTimer: ReturnType<typeof setTimeout>;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(syncBadgeHeight, 100);
+  });
+</script>

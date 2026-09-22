@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+const entries = (await getCollection('clientes')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="clientes" class="section clientes">
+  <p class="section-kicker">Marcas que han confiado en The Boys</p>
+  <h2 class="section-title">Clientes</h2>
+  <ul class="clientes-grid">
+    {
+      entries.map((c) => (
+        <li class="cliente-tile">
+          {c.data.logo ? (
+            <Image src={c.data.logo} alt={c.data.name} width={140} height={56} />
+          ) : (
+            <span>{c.data.name}</span>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .clientes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    list-style: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .cliente-tile {
+    padding: var(--space-3) var(--space-2);
+    min-height: 72px;
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+  }
+  .cliente-tile span {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(250, 250, 250, 0.75);
+  }
+  .cliente-tile :global(img) {
+    max-height: 40px;
+    width: auto;
+    max-width: 100%;
+  }
+</style>

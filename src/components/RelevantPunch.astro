@@ -1,0 +1,91 @@
+---
+const pillars = [
+  {
+    name: 'Marca',
+    desc: 'Una identidad con opinión propia: posicionamiento, tono y diseño que se reconocen sin firma.',
+  },
+  {
+    name: 'Sociedad',
+    desc: 'Conversación real con la cultura: lo que pasa afuera, no solo dentro del brief.',
+  },
+  {
+    name: 'Momentos',
+    desc: 'El instante exacto en que una idea encuentra a la audiencia y se vuelve relevante.',
+  },
+];
+---
+
+<section id="relevant-punch" class="section punch">
+  <p class="section-kicker">Nuestro framework de trabajo</p>
+  <h2 class="section-title">Relevant Punch</h2>
+  <p class="punch-intro">
+    Marca + Sociedad + Momentos: así construimos cada proyecto, cruzando estas tres variables hasta
+    encontrar el golpe relevante.
+  </p>
+  <div class="punch-grid">
+    {
+      pillars.map((p) => (
+        <article class="punch-card">
+          <h3>{p.name}</h3>
+          <p>{p.desc}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .punch-intro {
+    max-width: 640px;
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.5;
+    color: rgba(250, 250, 250, 0.75);
+    margin-bottom: var(--space-6);
+  }
+  .punch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-3);
+  }
+  .punch-card {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-btn);
+    padding: var(--space-4);
+  }
+  .punch-card h3 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 24px;
+    color: var(--lime);
+    margin-bottom: var(--space-2);
+  }
+  .punch-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(250, 250, 250, 0.65);
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduceMotion) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from('.punch-card', {
+      scrollTrigger: {
+        trigger: '.punch-grid',
+        start: 'top 80%',
+        once: true,
+      },
+      opacity: 0,
+      y: 24,
+      duration: 0.7,
+      ease: 'power2.out',
+      stagger: 0.08,
+    });
+  }
+</script>

@@ -1,0 +1,123 @@
+---
+const services = [
+  {
+    name: 'Creativity',
+    desc: 'Ideas valientes y memorables que venden y generan voz de marca.',
+    featured: false,
+  },
+  {
+    name: 'Business Strategy',
+    desc: 'Estrategias de alto impacto que crean valor de negocio.',
+    featured: false,
+  },
+  {
+    name: 'Brave Labs',
+    desc: 'Neurociencia aplicada: eye tracking, facial coding, tests de asociación implícita, UX y modelos predictivos. Única agencia en Chile con laboratorio propio.',
+    featured: true,
+  },
+  {
+    name: 'Brand Strategy · Design',
+    desc: 'Diseño y estrategia de marca diferenciadora.',
+    featured: false,
+  },
+  {
+    name: 'Media · Analytics',
+    desc: 'Estrategias de medios y análisis de métricas.',
+    featured: false,
+  },
+  {
+    name: 'Experience',
+    desc: 'Experiencia de consumidor completa, de punta a punta.',
+    featured: false,
+  },
+  {
+    name: 'Digital · Now',
+    desc: 'Soluciones digitales: web, juegos, metaverso e IA.',
+    featured: false,
+  },
+  {
+    name: 'Inside The Company',
+    desc: 'Employer branding y comunicación interna para RRHH.',
+    featured: false,
+  },
+];
+---
+
+<section id="servicios" class="section pilares">
+  <p class="section-kicker">Los servicios de The Boys, agencia de publicidad creativa digital en Santiago</p>
+  <h2 class="section-title">Nuestros 8 servicios</h2>
+  <div class="pilares-grid">
+    {
+      services.map((s) => (
+        <article class:list={['pilar-card', { featured: s.featured }]}>
+          <h3>{s.name}</h3>
+          <p class="pilar-desc">{s.desc}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .pilares-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .pilar-card {
+    background: var(--ink);
+    padding: var(--space-4);
+    transition: background 0.2s ease;
+  }
+  .pilar-card:hover,
+  .pilar-card:focus-within {
+    background: #161616;
+  }
+  .pilar-card.featured {
+    background: #14101c;
+  }
+  .pilar-card.featured:hover {
+    background: #1a1424;
+  }
+  .pilar-card h3 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: var(--space-1);
+    color: var(--paper);
+  }
+  .pilar-card.featured h3 {
+    color: var(--lila);
+  }
+  .pilar-desc {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(250, 250, 250, 0.65);
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduceMotion) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from('.pilar-card', {
+      scrollTrigger: {
+        trigger: '.pilares-grid',
+        start: 'top 80%',
+        once: true,
+      },
+      opacity: 0,
+      y: 24,
+      duration: 0.7,
+      ease: 'power2.out',
+      stagger: 0.06,
+    });
+  }
+</script>
