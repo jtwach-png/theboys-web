@@ -38,13 +38,13 @@ const premiosData = premios.map((name) => ({
   <span class="section-tag">Trayectoria del equipo</span>
   <h2 class="section-title">Reconocimiento en la industria</h2>
   <p class="trayectoria-copy">
-    El equipo de The Boys, liderado por Miguel Ángel Barahona (CCO), acumula reconocimiento en los
-    principales festivales de publicidad y creatividad de la industria.
+    Miembros del equipo de The Boys acumulan reconocimiento en los principales festivales de
+    publicidad y creatividad de la industria.
   </p>
   <ul class="premios-row">
     {
       premiosData.map((p) => (
-        <li class="premio-tile">
+        <li class:list={['premio-tile', { 'has-logo': p.logo }]}>
           {p.logo ? <Image src={p.logo} alt={p.name} width={120} height={48} /> : <span>{p.name}</span>}
         </li>
       ))
@@ -72,7 +72,17 @@ const premiosData = premios.map((name) => ({
     padding: var(--space-2) var(--space-3);
     display: flex;
     align-items: center;
+    justify-content: center;
     min-height: 48px;
+    transition: transform 0.2s ease;
+  }
+  .premio-tile.has-logo {
+    background: var(--paper);
+    border-color: transparent;
+    padding: var(--space-2) var(--space-4);
+  }
+  .premio-tile.has-logo:hover {
+    transform: scale(1.03);
   }
   .premio-tile span {
     font-family: var(--font-display);
@@ -83,5 +93,6 @@ const premiosData = premios.map((name) => ({
   .premio-tile :global(img) {
     max-height: 28px;
     width: auto;
+    object-fit: contain;
   }
 </style>

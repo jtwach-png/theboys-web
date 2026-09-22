@@ -11,9 +11,9 @@ const entries = (await getCollection('clientes')).sort((a, b) => a.data.order - 
   <ul class="clientes-grid">
     {
       entries.map((c) => (
-        <li class="cliente-tile">
+        <li class:list={['cliente-tile', { 'has-logo': c.data.logo }]}>
           {c.data.logo ? (
-            <Image src={c.data.logo} alt={c.data.name} width={140} height={56} />
+            <Image src={c.data.logo} alt={c.data.name} width={160} height={64} />
           ) : (
             <span>{c.data.name}</span>
           )}
@@ -26,18 +26,29 @@ const entries = (await getCollection('clientes')).sort((a, b) => a.data.order - 
 <style>
   .clientes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--space-2);
     list-style: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    border-left: 1px solid rgba(255, 255, 255, 0.12);
   }
   .cliente-tile {
-    padding: var(--space-3) var(--space-2);
-    min-height: 72px;
-    border-right: 1px solid rgba(255, 255, 255, 0.12);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    min-height: 96px;
+    padding: var(--space-3);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-btn);
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  /* Los logos reales llegan con fondos/proporciones distintas: una tarjeta blanca
+     uniforme absorbe esa inconsistencia en vez de mostrarla contra el negro. */
+  .cliente-tile.has-logo {
+    background: var(--paper);
+    border-color: transparent;
+  }
+  .cliente-tile.has-logo:hover {
+    transform: scale(1.03);
   }
   .cliente-tile span {
     font-size: 14px;
@@ -45,8 +56,9 @@ const entries = (await getCollection('clientes')).sort((a, b) => a.data.order - 
     color: rgba(250, 250, 250, 0.75);
   }
   .cliente-tile :global(img) {
-    max-height: 40px;
-    width: auto;
+    max-height: 48px;
     max-width: 100%;
+    width: auto;
+    object-fit: contain;
   }
 </style>
