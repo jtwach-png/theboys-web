@@ -53,21 +53,9 @@ video {
   margin-bottom: var(--space-6);
   color: var(--paper);
 }
-/* Trazos a mano: solo visibles con la variante B activada en el panel de revisión */
 .hand-stroke {
-  display: none;
+  display: block;
   pointer-events: none;
-}
-body.variant-strokes .hand-stroke {
-  display: block;
-}
-
-/* Seccion FAQ: solo visible con la variante activada en el panel de revision */
-.variant-section-faq {
-  display: none;
-}
-body.variant-faq .variant-section-faq {
-  display: block;
 }
 
 .section-tag {

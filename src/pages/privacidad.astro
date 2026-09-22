@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Política de Privacidad y Cookies — The Boys"
+  description="Política de privacidad y cookies de theboys.cl."
+>
+  <Header />
+  <section class="section privacidad">
+    <p class="section-kicker">Última actualización: septiembre de 2026</p>
+    <h1 class="section-title">Privacidad y Cookies</h1>
+
+    <div class="contenido">
+      <h2>Resumen</h2>
+      <p>
+        Este sitio no tiene formularios ni sistemas de registro, por lo que <strong>no recopilamos,
+        almacenamos ni procesamos datos personales de quienes lo visitan</strong>. Tampoco utilizamos
+        cookies propias de seguimiento ni analítica.
+      </p>
+
+      <h2>Recursos de terceros</h2>
+      <p>
+        Para funcionar, el sitio carga algunos recursos externos que no dependen de nosotros:
+      </p>
+      <ul>
+        <li>Tipografías desde Google Fonts (fonts.googleapis.com y fonts.gstatic.com).</li>
+        <li>La librería de animación GSAP desde el CDN de Cloudflare (cdnjs.cloudflare.com).</li>
+        <li>
+          El botón de WhatsApp te lleva a wa.me, un servicio externo de Meta/WhatsApp; una vez ahí
+          aplican sus propias políticas.
+        </li>
+      </ul>
+      <p>
+        Estos proveedores pueden registrar información técnica básica de la conexión (como la
+        dirección IP) según sus propias políticas de privacidad, de la misma forma en que ocurre en
+        prácticamente cualquier sitio web. No usamos esta información para identificarte ni la
+        combinamos con ningún otro dato.
+      </p>
+
+      <h2>Cookies</h2>
+      <p>
+        El sitio no instala cookies propias de seguimiento, publicidad o analítica. Si en el futuro
+        incorporamos herramientas que sí las utilicen, actualizaremos esta página y pediremos tu
+        consentimiento antes de activarlas.
+      </p>
+
+      <h2>Contacto</h2>
+      <p>
+        Si tienes preguntas sobre esta política, escríbenos a
+        <a href="mailto:josetomas@theboys.cl">josetomas@theboys.cl</a> o
+        <a href="mailto:miguelangel@theboys.cl">miguelangel@theboys.cl</a>.
+      </p>
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .contenido {
+    max-width: 720px;
+  }
+  .contenido h2 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 22px;
+    color: var(--paper);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-2);
+  }
+  .contenido h2:first-child {
+    margin-top: 0;
+  }
+  .contenido p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(250, 250, 250, 0.75);
+    margin-bottom: var(--space-2);
+  }
+  .contenido ul {
+    margin: 0 0 var(--space-2) 1.2em;
+    color: rgba(250, 250, 250, 0.75);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .contenido a {
+    color: var(--lime);
+  }
+</style>

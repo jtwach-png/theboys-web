@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
-import ReviewToggle from '../components/ReviewToggle.astro';
+import CookieNotice from '../components/CookieNotice.astro';
 
 interface Props {
   title: string;
@@ -19,13 +19,7 @@ const orgSchema = {
   logo: 'https://theboys.cl/logo-completo.svg',
   slogan: 'think brave!',
   description,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Av. Apoquindo 6550, of. 205',
-    addressLocality: 'Las Condes',
-    addressRegion: 'Región Metropolitana',
-    addressCountry: 'CL',
-  },
+  areaServed: ['CL', 'AR', 'PE', 'CO', 'MX'],
   founder: [
     {
       '@type': 'Person',
@@ -70,6 +64,6 @@ const orgSchema = {
   <body>
     <slot />
     <WhatsAppButton />
-    <ReviewToggle />
+    <CookieNotice />
   </body>
 </html>

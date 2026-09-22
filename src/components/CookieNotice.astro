@@ -1,0 +1,81 @@
+---
+---
+
+<div class="cookie-notice" id="cookieNotice" role="region" aria-label="Aviso de privacidad">
+  <p>
+    Este sitio no usa cookies de seguimiento ni almacena datos personales: no tiene formularios.
+    Cargamos fuentes y una librería de animación desde CDNs externos.
+    <a href="/privacidad/">Más información</a>.
+  </p>
+  <button type="button" id="cookieDismiss" aria-label="Cerrar aviso">Entendido</button>
+</div>
+
+<style>
+  .cookie-notice {
+    position: fixed;
+    left: var(--space-3);
+    right: var(--space-3);
+    bottom: var(--space-3);
+    z-index: 30;
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    background: #141414;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-btn);
+    padding: var(--space-3);
+  }
+  .cookie-notice p {
+    flex: 1 1 320px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(250, 250, 250, 0.75);
+    margin: 0;
+  }
+  .cookie-notice a {
+    color: var(--lime);
+  }
+  .cookie-notice button {
+    flex: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 13px;
+    padding: 10px 20px;
+    background: var(--lime);
+    color: var(--ink);
+    border: none;
+    border-radius: var(--radius-btn);
+    cursor: pointer;
+  }
+  .cookie-notice.is-hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  const KEY = 'cookie-notice-dismissed';
+  const notice = document.getElementById('cookieNotice');
+  const dismissBtn = document.getElementById('cookieDismiss');
+
+  try {
+    if (notice && localStorage.getItem(KEY) === '1') {
+      notice.classList.add('is-hidden');
+    }
+  } catch {
+    /* localStorage no disponible: se mantiene visible */
+  }
+
+  dismissBtn?.addEventListener('click', () => {
+    notice?.classList.add('is-hidden');
+    try {
+      localStorage.setItem(KEY, '1');
+    } catch {
+      /* no-op */
+    }
+  });
+</script>

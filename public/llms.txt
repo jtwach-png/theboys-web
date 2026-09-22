@@ -1,6 +1,6 @@
 # The Boys
 
-> Agencia de publicidad creativa digital en Santiago de Chile (Marketing y Publicidad Moob SpA y Locos Chile SpA). Ideas y estrategias multiplataforma, desde la estrategia y la investigación hasta la ejecución. Tagline: "think brave!". Framework propio: Relevant Punch (Marca + Sociedad + Momentos).
+> Agencia de publicidad creativa digital con sede en Santiago de Chile y alcance en Latinoamérica (Marketing y Publicidad Moob SpA y Locos Chile SpA). Ideas y estrategias multiplataforma, desde la estrategia y la investigación hasta la ejecución. Tagline: "think brave!". Framework propio: Relevant Punch (Marca + Sociedad + Momentos).
 
 ## Servicios
 Ocho líneas de servicio: Creativity, Business Strategy, Brave Labs (neurociencia aplicada: eye tracking, facial coding, tests de asociación implícita, UX, modelos predictivos — único laboratorio propio de este tipo en una agencia en Chile), Brand Strategy · Design, Media · Analytics, Experience, Digital · Now, Inside The Company.
@@ -12,5 +12,8 @@ CMPC, Correos Chile, Candelaria (Lundin Mining), Paris (Cencosud), Universidad A
 - José Tomás Wachtendorff, Founder & Chief Strategy Officer — josetomas@theboys.cl
 - Miguel Ángel Barahona, Founder & Chief Creative Officer — miguelangel@theboys.cl
 
+## Alcance
+Con base en Santiago de Chile, trabaja con marcas en toda Latinoamérica (Argentina, Perú, Colombia, México, entre otros).
+
 ## Contacto
-Av. Apoquindo 6550, of. 205, Las Condes, Santiago, Chile. https://theboys.cl/#contacto
+https://theboys.cl/#contacto

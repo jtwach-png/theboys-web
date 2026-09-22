@@ -6,6 +6,7 @@ const year = new Date().getFullYear();
   <img class="footer-logo" src="/logo-completo.svg" alt="The Boys — think brave!" width="220" height="240" />
   <div class="footer-meta">
     <p>&copy; {year} Marketing y Publicidad Moob SpA y Locos Chile SpA — The Boys</p>
+    <a href="/privacidad/">Privacidad y Cookies</a>
   </div>
 </footer>
 
@@ -19,8 +20,22 @@ const year = new Date().getFullYear();
     width: auto;
     margin-bottom: var(--space-4);
   }
+  .footer-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: baseline;
+  }
   .footer-meta p {
     font-size: 13px;
     color: rgba(250, 250, 250, 0.5);
+  }
+  .footer-meta a {
+    font-size: 13px;
+    color: rgba(250, 250, 250, 0.5);
+    text-decoration: underline;
+  }
+  .footer-meta a:hover {
+    color: var(--paper);
   }
 </style>
