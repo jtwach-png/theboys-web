@@ -6,8 +6,7 @@ const entries = (await getCollection('clientes')).sort((a, b) => a.data.order - 
 ---
 
 <section id="clientes" class="section clientes">
-  <p class="section-kicker">Marcas que han confiado en The Boys</p>
-  <h2 class="section-title">Clientes</h2>
+  <h2 class="section-title">Experiencia con marcas</h2>
   <ul class="clientes-grid">
     {
       entries.map((c) => (

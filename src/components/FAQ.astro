@@ -2,15 +2,15 @@
 const faqs = [
   {
     q: '¿Qué tipo de trabajos hace The Boys?',
-    a: 'De todo, dentro de nuestros 8 servicios: desarrollo digital (sitios web, e-commerce, apps, juegos), campañas creativas y de medios, estrategia de marca y de negocio, consultoría con neurociencia aplicada (Brave Labs), experiencia de cliente, y employer branding para equipos internos. Trabajamos tanto proyectos puntuales como relaciones de largo plazo.',
+    a: 'De todo, dentro de nuestros servicios: desarrollo digital (sitios web, e-commerce, apps, juegos), campañas creativas y de medios, estrategia de marca y de negocio, consultoría con Neurociencia Aplicada (Brave Lab), experiencia de cliente, y employer branding para equipos internos. Trabajamos tanto proyectos puntuales como relaciones de largo plazo.',
   },
   {
-    q: '¿Qué es Brave Labs?',
-    a: 'Es el laboratorio propio de neurociencia aplicada de The Boys: eye tracking, facial coding, tests de asociación implícita, UX y modelos predictivos. Es un servicio integrado a la oferta de la agencia, único en una agencia de publicidad en Chile.',
+    q: '¿Qué es Brave Lab?',
+    a: 'Es el laboratorio propio de Neurociencia Aplicada de The Boys: eye tracking, facial coding, tests de asociación implícita, UX y modelos predictivos. Es un servicio integrado a la oferta de la agencia, único en una agencia de publicidad en Chile.',
   },
   {
     q: '¿Qué significa "Relevant Punch"?',
-    a: 'Es el framework propio de The Boys: Marca + Sociedad + Momentos. Cruzamos estas tres variables en cada proyecto para encontrar el golpe relevante para cada marca.',
+    a: 'Es el framework propio de The Boys: Marca, Sociedad, Momentos y Atención. Cruzamos estas cuatro variables en cada proyecto para encontrar el golpe relevante para cada marca.',
   },
   {
     q: '¿Trabajan solo con marcas en Chile?',
@@ -57,7 +57,7 @@ const faqSchema = {
   }
   .faq-item {
     border-top: 1px solid rgba(255, 255, 255, 0.12);
-    padding: var(--space-3) 0;
+    padding: var(--space-4) 0;
   }
   .faq-item:last-child {
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -66,24 +66,31 @@ const faqSchema = {
     cursor: pointer;
     font-family: var(--font-display);
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 20px;
+    line-height: 1.4;
     color: var(--paper);
     list-style: none;
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
   }
   .faq-item summary::-webkit-details-marker {
     display: none;
   }
   .faq-item summary::before {
-    content: '+ ';
+    content: '+';
     color: var(--lime);
+    font-size: 28px;
+    line-height: 1;
+    flex: none;
   }
   .faq-item[open] summary::before {
-    content: '− ';
+    content: '−';
   }
   .faq-item p {
-    margin-top: var(--space-2);
-    font-size: 14px;
-    line-height: 1.6;
+    margin-top: var(--space-3);
+    font-size: 15px;
+    line-height: 1.75;
     color: rgba(250, 250, 250, 0.7);
   }
 </style>

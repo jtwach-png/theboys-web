@@ -28,23 +28,21 @@ for (const [path, mod] of Object.entries(logoModules)) {
   logosBySlug.set(filename, mod.default);
 }
 
+const largeLogos = new Set(['El Ojo de Iberoamérica', 'Clio Awards', 'Pinnacle Awards']);
+
 const premiosData = premios.map((name) => ({
   name,
   logo: logosBySlug.get(slugify(name)) ?? null,
+  large: largeLogos.has(name),
 }));
 ---
 
 <section id="trayectoria" class="section trayectoria">
-  <span class="section-tag">Trayectoria del equipo</span>
   <h2 class="section-title">Reconocimiento en la industria</h2>
-  <p class="trayectoria-copy">
-    Miembros del equipo de The Boys acumulan reconocimiento en los principales festivales de
-    publicidad y creatividad de la industria.
-  </p>
   <ul class="premios-row">
     {
       premiosData.map((p) => (
-        <li class:list={['premio-tile', { 'has-logo': p.logo }]}>
+        <li class:list={['premio-tile', { 'has-logo': p.logo, 'premio-tile--lg': p.large }]}>
           {p.logo ? <Image src={p.logo} alt={p.name} width={120} height={48} fit="contain" /> : <span>{p.name}</span>}
         </li>
       ))
@@ -53,13 +51,6 @@ const premiosData = premios.map((name) => ({
 </section>
 
 <style>
-  .trayectoria-copy {
-    max-width: 640px;
-    font-size: clamp(16px, 2vw, 20px);
-    line-height: 1.5;
-    color: rgba(250, 250, 250, 0.75);
-    margin-bottom: var(--space-4);
-  }
   .premios-row {
     display: flex;
     flex-wrap: wrap;
@@ -77,7 +68,7 @@ const premiosData = premios.map((name) => ({
     transition: transform 0.2s ease;
   }
   .premio-tile.has-logo {
-    background: var(--paper);
+    background: #ffffff;
     border-color: transparent;
     padding: var(--space-2) var(--space-4);
   }
@@ -94,5 +85,8 @@ const premiosData = premios.map((name) => ({
     max-height: 28px;
     width: auto;
     object-fit: contain;
+  }
+  .premio-tile--lg :global(img) {
+    max-height: 44px;
   }
 </style>

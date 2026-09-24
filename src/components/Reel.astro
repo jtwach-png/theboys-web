@@ -1,10 +1,12 @@
 ---
-import poster from '../assets/video-reel-poster.jpg';
+import { getImage } from 'astro:assets';
+import posterSrc from '../assets/video-reel-poster.jpg';
+
+const poster = await getImage({ src: posterSrc, width: 960, height: 540 });
 ---
 
 <section id="reel" class="section reel">
-  <p class="section-kicker">The Boys en movimiento</p>
-  <h2 class="section-title">Reel</h2>
+  <h2 class="section-title">The Boys en Movimiento</h2>
   <div class="reel-frame">
     <video
       id="reelVideo"
