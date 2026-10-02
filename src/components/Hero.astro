@@ -33,10 +33,7 @@
     </svg>
   </div>
   <div class="hero-col hero-col-support">
-    <p class="subhead">
-      Somos una compañía creativa que entiende antes de crear. Ideas y estrategias
-      multiplataforma, desde la investigación hasta la ejecución.
-    </p>
+    <p class="subhead">Somos una compañía creativa que entiende antes de crear.</p>
     <p class="credential">
       <span class="dot"></span>Única agencia en Chile con laboratorio propio de Neurociencia Aplicada
     </p>
@@ -53,7 +50,7 @@
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
-    gap: var(--space-8);
+    gap: var(--space-4);
     max-width: 1600px;
     margin: 0 auto;
     padding: 6vh 6vw;
@@ -149,20 +146,30 @@
     }
   }
 
+  /* Mobile: el busto va entre el titular y el texto de apoyo. */
   .hero-badge {
-    display: none;
+    display: block;
+    order: 1;
     width: auto;
-    height: 420px;
+    height: 280px;
     max-width: 100%;
-    margin-left: 3vw;
     background: var(--ink);
-    justify-self: end;
+    justify-self: center;
     pointer-events: none;
-    will-change: transform;
+  }
+  .hero-col-support {
+    order: 2;
   }
   @media (min-width: 900px) {
     .hero-badge {
-      display: block;
+      order: 0;
+      height: 420px;
+      margin-left: 3vw;
+      justify-self: end;
+      will-change: transform;
+    }
+    .hero-col-support {
+      order: 0;
     }
   }
 </style>
@@ -182,6 +189,8 @@
   const turb = document.getElementById('turb');
   const disp = document.getElementById('disp');
   const video = document.querySelector<HTMLVideoElement>('.hero-badge');
+  // El parallax y el alto sincronizado del busto solo aplican al layout de 3 columnas.
+  const desktop = window.matchMedia('(min-width: 900px)');
   let targetScale = 0;
   let currentScale = 0;
   let targetFreq = 0;
@@ -231,7 +240,11 @@
 
     currentVideoX += (targetVideoX - currentVideoX) * 0.06;
     currentVideoY += (targetVideoY - currentVideoY) * 0.06;
-    if (video) video.style.transform = `translate3d(${currentVideoX.toFixed(2)}px, ${currentVideoY.toFixed(2)}px, 0)`;
+    if (video) {
+      video.style.transform = desktop.matches
+        ? `translate3d(${currentVideoX.toFixed(2)}px, ${currentVideoY.toFixed(2)}px, 0)`
+        : '';
+    }
 
     requestAnimationFrame(tick);
   }
@@ -241,6 +254,10 @@
     const hook = document.getElementById('heroHook');
     const badge = document.querySelector<HTMLElement>('.hero-badge');
     if (!hook || !badge) return;
+    if (!desktop.matches) {
+      badge.style.height = '';
+      return;
+    }
     const h = hook.getBoundingClientRect().height;
     if (h > 0) badge.style.height = `${h}px`;
   }
