@@ -1,11 +1,11 @@
 # The Boys
 
-> Agencia de publicidad creativa digital con sede en Santiago de Chile y alcance en Latinoamérica (Marketing y Publicidad Moob SpA y Locos Chile SpA). Ideas y estrategias multiplataforma, desde la investigación hasta la ejecución. Tagline: "think brave!". Framework propio: Relevant Punch™ (Marca, Sociedad, Momentos y Atención).
+> Agencia de publicidad creativa digital con sede en Santiago de Chile y alcance en Latinoamérica (Marketing y Publicidad Moob SpA y Locos Chile SpA). Tagline: "think brave!". Framework propio: Relevant Punch™ (Marca, Sociedad, Momentos y Atención).
 
 ## Secciones
 
 - [Inicio](https://theboys.cl/): presentación de la agencia y su posicionamiento.
-- [Servicios](https://theboys.cl/#servicios): Creativity, Business Strategy, Brave Lab (Neurociencia Aplicada: eye tracking, facial coding, tests de asociación implícita, UX, modelos predictivos — único laboratorio propio de este tipo en una agencia en Chile), Brand Strategy · Design, Media · Analytics, Experience, Digital · Now, Inside The Company.
+- [Servicios](https://theboys.cl/#servicios): Creativity, Business Strategy, Brave Lab (Neurociencia Aplicada: eye tracking, facial coding, tests de asociación implícita, UX, modelos predictivos - único laboratorio propio de este tipo en una agencia en Chile), Brand Strategy · Design, Media · Analytics, Experience, Digital · Now, Inside The Company.
 - [Clientes](https://theboys.cl/#clientes): marcas con las que ha trabajado la agencia, entre ellas CMPC, Correos Chile, Candelaria (Lundin Mining), Paris (Cencosud), Adidas, McDonald's, Banco Falabella, Visa, BMW, Movistar, Gobierno de Chile y Sanofi.
 - [Preguntas frecuentes](https://theboys.cl/#faq): tipos de trabajo, alcance geográfico y cómo iniciar un proyecto.
 - [Contacto](https://theboys.cl/#contacto): datos de los fundadores.
